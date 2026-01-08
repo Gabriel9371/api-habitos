@@ -35,4 +35,10 @@ public class HabitoController {
     }
 
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Habito> atualizar(@PathVariable Long id, @RequestBody Habito habito){
+        return service.atualizar(id, habito).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+
 }

@@ -35,4 +35,12 @@ public class HabitoService {
     }
 
 
+    public Optional<Habito> atualizar(Long id, Habito dados){
+        return repository.findById(id).map(habito ->  {
+           habito.setNome(dados.getNome());
+           habito.setFrequencia(dados.getFrequencia());
+           return repository.save(habito);
+        });
+    }
+
 }
