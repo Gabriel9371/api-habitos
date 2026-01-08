@@ -5,6 +5,7 @@ import com.gabriel.api_habitos.entity.Habito;
 import com.gabriel.api_habitos.repository.HabitoRepository;
 import org.springframework.stereotype.Service;
 
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,4 +33,6 @@ public class HabitoService {
     public void deletar(Long id){
         repository.deleteById(id);
     }
+
+
 }
