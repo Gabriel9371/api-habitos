@@ -1,0 +1,33 @@
+package com.gabriel.api_habitos.controller;
+
+
+import com.gabriel.api_habitos.entity.Habito;
+import com.gabriel.api_habitos.service.HabitoService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/habitos")
+public class HabitoController {
+    private final HabitoService service;
+
+    public HabitoController(HabitoService service){
+        this.service = service;
+    }
+
+    @PostMapping
+    public ResponseEntity<Habito> criar(@RequestBody Habito habito){
+        Habito salvo = service.criar(habito);
+
+        return ResponseEntity.ok(salvo);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Habito>> listar(){
+        return ResponseEntity.ok(service.listarTodos());
+    }
+
+
+}
