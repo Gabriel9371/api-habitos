@@ -40,5 +40,18 @@ public class HabitoController {
         return service.atualizar(id, habito).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @PatchMapping("/{id}/ativar")
+    public ResponseEntity<Habito> ativar(@PathVariable Long id){
+        return service.ativar(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Habito> deletar(@PathVariable Long id){
+        if(service.desativar(id)){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
 
 }

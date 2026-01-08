@@ -43,4 +43,22 @@ public class HabitoService {
         });
     }
 
+    public boolean desativar(Long id){
+        return repository.findById(id).map(habito -> {
+           habito.setAtivo(false);
+           repository.save(habito);
+
+           return true;
+        }).orElse(false);
+    }
+
+
+
+    public Optional<Habito> ativar(Long id){
+        return repository.findById(id).map(habito -> {
+            habito.setAtivo(true);
+            return repository.save(habito);
+        });
+    }
+
 }
