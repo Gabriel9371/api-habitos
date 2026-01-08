@@ -14,7 +14,8 @@ O projeto foi criado com foco em boas práticas de backend, separação de camad
 ## Arquitetura
 
 O projeto foi estruturado seguindo o padrão de camadas para garantir separação de responsabilidades:
-```mermaid
+```azure
+    Controller -> service -> repository -> database
     
     - controller: recebe e responde requisições
     - Service: regras de negocio
